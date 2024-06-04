@@ -35,8 +35,7 @@ public class AlunoService {
                         new ResponseStatusException(HttpStatus.NOT_FOUND, "Curso não encontrado"));
 
         Aluno alunoSaved = alunoRepository.save(
-                new Aluno(
-                        null,
+                new Aluno(UUID.randomUUID(),
                         criarAlunoRequest.getName(),
                         criarAlunoRequest.getEmail(),
                         curso
