@@ -33,10 +33,9 @@ public class HandleValidationExceptions {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(erroCapturado);
     }
 
-
-    @ExceptionHandler(NoSuchElementException.class)
+    @ExceptionHandler(NotFoundException.class)
     @ResponseBody
-    public ResponseEntity<ErrosDetalhes> handleException(NoSuchElementException e) {
+    public ResponseEntity<ErrosDetalhes> handleException(NotFoundException e) {
 
         ErrosDetalhes erroCapturado =
                 ErrosDetalhes.builder() //
@@ -44,7 +43,7 @@ public class HandleValidationExceptions {
                         .detalhes(e.getMessage())
                         .build();
 
-        log.info("Erros", e.getMessage());
+        log.info("Erro, nãoo encontrado", e.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(erroCapturado);
     }
 

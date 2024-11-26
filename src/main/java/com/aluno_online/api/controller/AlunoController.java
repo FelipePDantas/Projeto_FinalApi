@@ -1,6 +1,7 @@
 package com.aluno_online.api.controller;
 
 import com.aluno_online.api.dtos.CriarAlunoRequest;
+import com.aluno_online.api.exception.NotFoundException;
 import com.aluno_online.api.model.Aluno;
 import com.aluno_online.api.service.AlunoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +22,15 @@ public class AlunoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody CriarAlunoRequest criarAlunoRequest) {
+    public void create(@RequestBody CriarAlunoRequest criarAlunoRequest) throws NotFoundException {
         alunoService.create(criarAlunoRequest);
     }
 
     @GetMapping("/all")
     @ResponseStatus(HttpStatus.OK)
-    public List<Aluno> findAll() {
+    public List<Aluno> findAll()
+    {
+        System.out.println("passou aqui");
         return alunoService.findAll();
     }
 
@@ -39,7 +42,7 @@ public class AlunoController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@RequestBody Aluno aluno, @PathVariable UUID id) {
+    public void update(@RequestBody Aluno aluno, @PathVariable UUID id) throws NotFoundException {
         alunoService.update(id, aluno);
     }
 

@@ -10,7 +10,6 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Log4j
 @Builder
 public class ErrosDetalhes {
 
