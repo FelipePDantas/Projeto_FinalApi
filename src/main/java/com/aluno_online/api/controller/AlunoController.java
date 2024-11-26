@@ -30,7 +30,6 @@ public class AlunoController {
     @ResponseStatus(HttpStatus.OK)
     public List<Aluno> findAll()
     {
-        System.out.println("passou aqui");
         return alunoService.findAll();
     }
 
